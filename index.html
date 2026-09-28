@@ -570,20 +570,20 @@
             </div>
         </section>
 
-        <!-- WORK SAMPLES SECTION WITH WORKING MODALS -->
+        <!-- WORK SAMPLES SECTION -->
 <section id="work-samples" class="py-20 bg-slate-900/50 border-t border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-16">
             <span class="text-brand-amber text-xs font-bold uppercase tracking-widest block mb-2">Deliverable Artifacts</span>
             <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Work Samples & Documentation</h2>
-            <p class="text-slate-400 text-sm mt-3">Click any sample below to view detailed preview documentation.</p>
+            <p class="text-slate-400 text-sm mt-3">Click any card below to view detailed preview documentation and breakdown reports.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <!-- Sample 1 Card -->
-            <button onclick="openModal('modal-qto')" class="text-left glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-brand-amber/50 transition cursor-pointer group w-full">
+            <div onclick="toggleSampleModal('modal-qto', true)" class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-brand-amber/60 hover:bg-slate-800/50 transition cursor-pointer group">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-brand-amber/10 text-brand-amber flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
@@ -599,13 +599,13 @@
                     </p>
                 </div>
                 <div class="pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs text-brand-amber font-medium">
-                    <span><i class="fa-solid fa-eye text-xs mr-1"></i> Click to View Preview</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-lines text-xs"></i> View Document Sheet</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
                 </div>
-            </button>
+            </div>
 
             <!-- Sample 2 Card -->
-            <button onclick="openModal('modal-dupa')" class="text-left glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-brand-cyan/50 transition cursor-pointer group w-full">
+            <div onclick="toggleSampleModal('modal-dupa', true)" class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-brand-cyan/60 hover:bg-slate-800/50 transition cursor-pointer group">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
@@ -621,13 +621,13 @@
                     </p>
                 </div>
                 <div class="pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs text-brand-cyan font-medium">
-                    <span><i class="fa-solid fa-eye text-xs mr-1"></i> Click to View Preview</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-calculator text-xs"></i> View Rate Analysis</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
                 </div>
-            </button>
+            </div>
 
             <!-- Sample 3 Card -->
-            <button onclick="openModal('modal-bbs')" class="text-left glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-emerald-500/50 transition cursor-pointer group w-full">
+            <div onclick="toggleSampleModal('modal-bbs', true)" class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-emerald-500/60 hover:bg-slate-800/50 transition cursor-pointer group">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
@@ -643,68 +643,183 @@
                     </p>
                 </div>
                 <div class="pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs text-emerald-400 font-medium">
-                    <span><i class="fa-solid fa-eye text-xs mr-1"></i> Click to View Preview</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-layer-group text-xs"></i> View Rebar Schedule</span>
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
                 </div>
-            </button>
+            </div>
 
         </div>
     </div>
 </section>
 
-<!-- POPUP MODALS -->
-<div id="modal-qto" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-card max-w-2xl w-full p-6 rounded-2xl border border-slate-700 relative">
-        <button onclick="closeModal('modal-qto')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">&times;</button>
-        <h3 class="text-xl font-bold text-white mb-2">QTO & Markup Sheet Preview</h3>
-        <p class="text-slate-400 text-xs mb-4">Sample structural concrete and rebar digital take-off overlay.</p>
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300">
-            [Sample Worksheet View]<br>
-            • Grid A-D Concrete Vol: 142.50 m³<br>
-            • Formwork Area: 480.00 m²<br>
-            • Rebar Tonnage (#16 & #20): 18.40 MT
+<!-- MODAL 1: QTO PREVIEW -->
+<div id="modal-qto" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-brand-amber/40 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-file-excel text-brand-amber text-xl"></i>
+                <div>
+                    <h3 class="text-white font-bold text-base">Quantity Take-Off (QTO) - Structural Concrete & Rebar</h3>
+                    <p class="text-slate-400 text-xs">PlanSwift Digitized Takeoff Summary Sheet</p>
+                </div>
+            </div>
+            <button onclick="toggleSampleModal('modal-qto', false)" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <div class="p-6 overflow-y-auto space-y-4 font-mono text-xs">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-slate-300">
+                <div class="text-brand-amber font-bold mb-2 pb-1 border-b border-slate-800">[SUMMARY BILL OF QUANTITIES - GROUND FLOOR STRUCTURAL]</div>
+                <div class="grid grid-cols-12 gap-2 text-slate-400 font-bold border-b border-slate-800 pb-2 mb-2">
+                    <span class="col-span-2">ITEM</span>
+                    <span class="col-span-5">DESCRIPTION</span>
+                    <span class="col-span-2 text-right">QTY</span>
+                    <span class="col-span-1 text-center">UNIT</span>
+                    <span class="col-span-2 text-right">STATUS</span>
+                </div>
+                <div class="grid grid-cols-12 gap-2 border-b border-slate-800/50 py-1.5">
+                    <span class="col-span-2 text-slate-500">3.01.A</span>
+                    <span class="col-span-5 text-white">Concrete FC=30MPa (Footings)</span>
+                    <span class="col-span-2 text-right text-brand-amber font-bold">142.50</span>
+                    <span class="col-span-1 text-center text-slate-400">m³</span>
+                    <span class="col-span-2 text-right text-emerald-400">Verified</span>
+                </div>
+                <div class="grid grid-cols-12 gap-2 border-b border-slate-800/50 py-1.5">
+                    <span class="col-span-2 text-slate-500">3.01.B</span>
+                    <span class="col-span-5 text-white">Concrete FC=35MPa (Columns & Shears)</span>
+                    <span class="col-span-2 text-right text-brand-amber font-bold">98.20</span>
+                    <span class="col-span-1 text-center text-slate-400">m³</span>
+                    <span class="col-span-2 text-right text-emerald-400">Verified</span>
+                </div>
+                <div class="grid grid-cols-12 gap-2 border-b border-slate-800/50 py-1.5">
+                    <span class="col-span-2 text-slate-500">3.02.A</span>
+                    <span class="col-span-5 text-white">Formwork Surface Area (2-Use Plywood)</span>
+                    <span class="col-span-2 text-right text-brand-amber font-bold">610.00</span>
+                    <span class="col-span-1 text-center text-slate-400">m²</span>
+                    <span class="col-span-2 text-right text-emerald-400">Verified</span>
+                </div>
+                <div class="grid grid-cols-12 gap-2 py-1.5">
+                    <span class="col-span-2 text-slate-500">3.03.A</span>
+                    <span class="col-span-5 text-white">Deformed Steel Bars Grade 60 (#16-#25)</span>
+                    <span class="col-span-2 text-right text-brand-amber font-bold">24.85</span>
+                    <span class="col-span-1 text-center text-slate-400">MT</span>
+                    <span class="col-span-2 text-right text-emerald-400">Verified</span>
+                </div>
+            </div>
+            <p class="text-slate-400 font-sans text-xs">
+                <i class="fa-solid fa-circle-info text-brand-amber mr-1"></i> Formatted in accordance with POMI / NRM measurement standards with audit-ready PlanSwift back-up calculation layers.
+            </p>
         </div>
     </div>
 </div>
 
-<div id="modal-dupa" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-card max-w-2xl w-full p-6 rounded-2xl border border-slate-700 relative">
-        <button onclick="closeModal('modal-dupa')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">&times;</button>
-        <h3 class="text-xl font-bold text-white mb-2">Detailed Unit Price Analysis</h3>
-        <p class="text-slate-400 text-xs mb-4">Labor, material, and equipment yield rate buildup.</p>
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300">
-            [DUPA Rate Breakdown]<br>
-            • Direct Material Cost: $85.00 / m³<br>
-            • Labor Productivity Yield: 0.45 MH/m³<br>
-            • OCM & Profit Factor: 15%
+<!-- MODAL 2: DUPA PREVIEW -->
+<div id="modal-dupa" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-brand-cyan/40 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-calculator text-brand-cyan text-xl"></i>
+                <div>
+                    <h3 class="text-white font-bold text-base">Detailed Unit Price Analysis (DUPA)</h3>
+                    <p class="text-slate-400 text-xs">Standard Item Rate Buildup Engine</p>
+                </div>
+            </div>
+            <button onclick="toggleSampleModal('modal-dupa', false)" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <div class="p-6 overflow-y-auto space-y-4 font-mono text-xs">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-slate-300">
+                <div class="text-brand-cyan font-bold mb-2 pb-1 border-b border-slate-800">[ITEM: STRUCTURAL CONCRETE FC=30MPa POURED IN PLACE]</div>
+                <div class="space-y-2">
+                    <div class="flex justify-between border-b border-slate-800/50 pb-1">
+                        <span class="text-slate-400">A. DIRECT MATERIAL (Ready-Mix + 3% Waste):</span>
+                        <span class="text-white font-bold">PHP 4,850.00 / m³</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800/50 pb-1">
+                        <span class="text-slate-400">B. DIRECT LABOR (1 Foreman, 2 Skilled, 4 Unskilled):</span>
+                        <span class="text-white font-bold">PHP 620.00 / m³</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800/50 pb-1">
+                        <span class="text-slate-400">C. EQUIPMENT RENTAL (Concrete Pump + Vibrators):</span>
+                        <span class="text-white font-bold">PHP 380.00 / m³</span>
+                    </div>
+                    <div class="flex justify-between text-brand-cyan font-bold pt-1">
+                        <span>TOTAL DIRECT COST (A + B + C):</span>
+                        <span>PHP 5,850.00 / m³</span>
+                    </div>
+                    <div class="flex justify-between text-emerald-400 pt-1 border-t border-slate-800">
+                        <span>ESTIMATED UNIT BID RATE (incl. 15% OCM + Profit):</span>
+                        <span>PHP 6,727.50 / m³</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div id="modal-bbs" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-card max-w-2xl w-full p-6 rounded-2xl border border-slate-700 relative">
-        <button onclick="closeModal('modal-bbs')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">&times;</button>
-        <h3 class="text-xl font-bold text-white mb-2">Bar Bending Schedule</h3>
-        <p class="text-slate-400 text-xs mb-4">Rebar cut length schedule & shape code index.</p>
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300">
-            [Shape Code Schedule]<br>
-            • Mark C1 - Main Bars: 12m Commercial Length<br>
-            • Stirrups/Ties Cut Length: 1.45m per set<br>
-            • Estimated Off-cut Scrap: < 2.5%
+<!-- MODAL 3: BBS PREVIEW -->
+<div id="modal-bbs" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-emerald-500/40 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-bars-staggered text-emerald-400 text-xl"></i>
+                <div>
+                    <h3 class="text-white font-bold text-base">Bar Bending Schedule (BBS) & Cut Sheet</h3>
+                    <p class="text-slate-400 text-xs">Rebar Fabrication & Cutting Yield Log</p>
+                </div>
+            </div>
+            <button onclick="toggleSampleModal('modal-bbs', false)" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <div class="p-6 overflow-y-auto space-y-4 font-mono text-xs">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-slate-300">
+                <div class="text-emerald-400 font-bold mb-2 pb-1 border-b border-slate-800">[BAR CUTTING & SHAPE CODE LOG - COLUMN C-1]</div>
+                <div class="space-y-2">
+                    <div class="flex justify-between border-b border-slate-800/50 pb-1">
+                        <span>Bar Mark: C1-M1 (#20 Main Bar)</span>
+                        <span class="text-emerald-400 font-bold">Cut Length: 11.85m</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800/50 pb-1">
+                        <span>Bar Mark: C1-T1 (#10 Stirrups / Shape Code 51)</span>
+                        <span class="text-emerald-400 font-bold">Cut Length: 1.62m</span>
+                    </div>
+                    <div class="flex justify-between text-slate-400 pt-1">
+                        <span>Commercial Stock Bar Utilization Yield:</span>
+                        <span class="text-white font-bold">97.8% (Off-cut Scrap &lt; 2.2%)</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Toggle Script (Add before </body> tag) -->
+<!-- MODAL JAVASCRIPT LOGIC -->
 <script>
-    function openModal(id) {
-        document.getElementById(id).classList.remove('hidden');
+    function toggleSampleModal(modalId, show) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            if (show) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
     }
-    function closeModal(id) {
-        document.getElementById(id).classList.add('hidden');
-    }
-</script>
 
+    // Close modals when clicking outside the content area
+    window.addEventListener('click', function(e) {
+        ['modal-qto', 'modal-dupa', 'modal-bbs'].forEach(function(id) {
+            const modal = document.getElementById(id);
+            if (e.target === modal) {
+                toggleSampleModal(id, false);
+            }
+        });
+    });
+</script>
         <!-- TOOLS & TECHNICAL STACK SECTION -->
         <section id="tools" class="py-20 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
